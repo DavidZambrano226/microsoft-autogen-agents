@@ -32,7 +32,7 @@ pip install -r requirements.txt
 Provide instructions on how to use the project. For example:
 
 ```bash
-python main.py
+python src/main.py
 ```
 
 Describe any command-line arguments or configuration options available.
