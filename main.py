@@ -4,7 +4,7 @@ import os
 config_list_bedrock = [
     {
         "api_type": "bedrock",
-        "model": "amazon.titan-text-express-v1",
+        "model": "anthropic.claude-3-5-sonnet-20240620-v1:0",
         "aws_region": os.environ.get("REGION", "us-east-1"),
         "aws_access_key": os.environ.get("AWS_ACCESS_KEY_ID"),
         "aws_secret_key": os.environ.get("AWS_SECRET_ACCESS_KEY"),
@@ -35,7 +35,5 @@ user_proxy = autogen.UserProxyAgent(
 
 user_proxy.initiate_chat(
     assistant,
-    message="""Write a python program to print the first
-    10 numbers of the Fibonacci sequence. Just output the python code, 
-    no additional information.""",
+    message="""What is your name?""",
 )
