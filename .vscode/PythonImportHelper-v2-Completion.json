@@ -1,0 +1,220 @@
+[
+    {
+        "label": "sys",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "sys",
+        "description": "sys",
+        "detail": "sys",
+        "documentation": {}
+    },
+    {
+        "label": "json",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "json",
+        "description": "json",
+        "detail": "json",
+        "documentation": {}
+    },
+    {
+        "label": "argparse",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "argparse",
+        "description": "argparse",
+        "detail": "argparse",
+        "documentation": {}
+    },
+    {
+        "label": "pformat",
+        "importPath": "pprint",
+        "description": "pprint",
+        "isExtraImport": true,
+        "detail": "pprint",
+        "documentation": {}
+    },
+    {
+        "label": "jmespath",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "jmespath",
+        "description": "jmespath",
+        "detail": "jmespath",
+        "documentation": {}
+    },
+    {
+        "label": "exceptions",
+        "importPath": "jmespath",
+        "description": "jmespath",
+        "isExtraImport": true,
+        "detail": "jmespath",
+        "documentation": {}
+    },
+    {
+        "label": "config_bedrock",
+        "importPath": "config.bedrock_config",
+        "description": "config.bedrock_config",
+        "isExtraImport": true,
+        "detail": "config.bedrock_config",
+        "documentation": {}
+    },
+    {
+        "label": "autogen",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "autogen",
+        "description": "autogen",
+        "detail": "autogen",
+        "documentation": {}
+    },
+    {
+        "label": "AssistantAgent",
+        "importPath": "autogen",
+        "description": "autogen",
+        "isExtraImport": true,
+        "detail": "autogen",
+        "documentation": {}
+    },
+    {
+        "label": "UserProxyAgent",
+        "importPath": "autogen",
+        "description": "autogen",
+        "isExtraImport": true,
+        "detail": "autogen",
+        "documentation": {}
+    },
+    {
+        "label": "os",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "os",
+        "description": "os",
+        "detail": "os",
+        "documentation": {}
+    },
+    {
+        "label": "setup",
+        "importPath": "setuptools",
+        "description": "setuptools",
+        "isExtraImport": true,
+        "detail": "setuptools",
+        "documentation": {}
+    },
+    {
+        "label": "find_packages",
+        "importPath": "setuptools",
+        "description": "setuptools",
+        "isExtraImport": true,
+        "detail": "setuptools",
+        "documentation": {}
+    },
+    {
+        "label": "main",
+        "kind": 2,
+        "importPath": ".venv.bin.jp",
+        "description": ".venv.bin.jp",
+        "peekOfCode": "def main():\n    parser = argparse.ArgumentParser()\n    parser.add_argument('expression')\n    parser.add_argument('-f', '--filename',\n                        help=('The filename containing the input data.  '\n                              'If a filename is not given then data is '\n                              'read from stdin.'))\n    parser.add_argument('--ast', action='store_true',\n                        help=('Pretty print the AST, do not search the data.'))\n    args = parser.parse_args()",
+        "detail": ".venv.bin.jp",
+        "documentation": {}
+    },
+    {
+        "label": "create_social_media_agent",
+        "kind": 2,
+        "importPath": "src.agents.manager_agent",
+        "description": "src.agents.manager_agent",
+        "peekOfCode": "def create_social_media_agent():\n    return AssistantAgent(\n        name=\"SocialMediaAgent\",\n        system_message=\"\"\"You are an AI assistant specialized in creating \n        engaging social media content. Your task is to generate posts for \n        various platforms like Twitter, Instagram, and LinkedIn.\"\"\",\n        llm_config={\n            \"config_list\": config_bedrock,\n        },\n    )",
+        "detail": "src.agents.manager_agent",
+        "documentation": {}
+    },
+    {
+        "label": "generate_social_media_post",
+        "kind": 2,
+        "importPath": "src.agents.manager_agent",
+        "description": "src.agents.manager_agent",
+        "peekOfCode": "def generate_social_media_post(topic, platform):\n    social_media_agent = create_social_media_agent()\n    user_proxy = UserProxyAgent(\n        name=\"UserProxy\",\n        human_input_mode=\"NEVER\",\n        max_consecutive_auto_reply=1,\n    )\n    user_proxy.initiate_chat(\n        social_media_agent,\n        message=f\"\"\"Generate a {platform} post ",
+        "detail": "src.agents.manager_agent",
+        "documentation": {}
+    },
+    {
+        "label": "config_bedrock",
+        "kind": 5,
+        "importPath": "src.config.bedrock_config",
+        "description": "src.config.bedrock_config",
+        "peekOfCode": "config_bedrock = [\n    {\n        \"api_type\": \"bedrock\",\n        \"model\": \"anthropic.claude-3-5-sonnet-20240620-v1:0\",\n        \"aws_region\": os.environ.get(\"REGION\", \"us-east-1\"),\n        \"aws_access_key\": os.environ.get(\"AWS_ACCESS_KEY_ID\"),\n        \"aws_secret_key\": os.environ.get(\"AWS_SECRET_ACCESS_KEY\"),\n        \"price\": [0.003, 0.015],\n        \"temperature\": 0.1,\n        \"cache_seed\": None,",
+        "detail": "src.config.bedrock_config",
+        "documentation": {}
+    },
+    {
+        "label": "config_gemini",
+        "kind": 5,
+        "importPath": "src.config.gemini_config",
+        "description": "src.config.gemini_config",
+        "peekOfCode": "config_gemini = [\n    {\n        \"model\": \"gemini-1.5-flash-latest\",\n        \"api_key\": \"AIzaSyAHPspD17NRB4zsmV2mKuzal7UZ4nMxfek\",\n        \"api_type\": \"google\"\n    }\n]",
+        "detail": "src.config.gemini_config",
+        "documentation": {}
+    },
+    {
+        "label": "config_list_bedrock",
+        "kind": 5,
+        "importPath": "src.main",
+        "description": "src.main",
+        "peekOfCode": "config_list_bedrock = [\n    {\n        \"api_type\": \"bedrock\",\n        \"model\": \"amazon.titan-text-express-v1\",\n        \"aws_region\": os.environ.get(\"REGION\", \"us-east-1\"),\n        \"aws_access_key\": os.environ.get(\"AWS_ACCESS_KEY_ID\"),\n        \"aws_secret_key\": os.environ.get(\"AWS_SECRET_ACCESS_KEY\"),\n        \"price\": [0.003, 0.015],\n        \"temperature\": 0.1,\n        \"cache_seed\": None,",
+        "detail": "src.main",
+        "documentation": {}
+    },
+    {
+        "label": "assistant",
+        "kind": 5,
+        "importPath": "src.main",
+        "description": "src.main",
+        "peekOfCode": "assistant = autogen.AssistantAgent(\n    \"assistant\",\n    llm_config={\n        \"config_list\": config_list_bedrock,\n    },\n)\nuser_proxy = autogen.UserProxyAgent(\n    \"user_proxy\",\n    human_input_mode=\"NEVER\",\n    code_execution_config={",
+        "detail": "src.main",
+        "documentation": {}
+    },
+    {
+        "label": "user_proxy",
+        "kind": 5,
+        "importPath": "src.main",
+        "description": "src.main",
+        "peekOfCode": "user_proxy = autogen.UserProxyAgent(\n    \"user_proxy\",\n    human_input_mode=\"NEVER\",\n    code_execution_config={\n        \"work_dir\": \"coding\",\n        \"use_docker\": False,\n    },\n    is_termination_msg=lambda x: x.get(\n        \"content\", \"\") and \"TERMINATE\" in x.get(\"content\", \"\"),\n    max_consecutive_auto_reply=1,",
+        "detail": "src.main",
+        "documentation": {}
+    },
+    {
+        "label": "config_list_bedrock",
+        "kind": 5,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "config_list_bedrock = [\n    {\n        \"api_type\": \"bedrock\",\n        \"model\": \"anthropic.claude-3-5-sonnet-20240620-v1:0\",\n        \"aws_region\": os.environ.get(\"REGION\", \"us-east-1\"),\n        \"aws_access_key\": os.environ.get(\"AWS_ACCESS_KEY_ID\"),\n        \"aws_secret_key\": os.environ.get(\"AWS_SECRET_ACCESS_KEY\"),\n        \"price\": [0.003, 0.015],\n        \"temperature\": 0.1,\n        \"cache_seed\": None,",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "assistant",
+        "kind": 5,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "assistant = autogen.AssistantAgent(\n    \"assistant\",\n    llm_config={\n        \"config_list\": config_list_bedrock,\n    },\n)\nuser_proxy = autogen.UserProxyAgent(\n    \"user_proxy\",\n    human_input_mode=\"NEVER\",\n    code_execution_config={",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "user_proxy",
+        "kind": 5,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "user_proxy = autogen.UserProxyAgent(\n    \"user_proxy\",\n    human_input_mode=\"NEVER\",\n    code_execution_config={\n        \"work_dir\": \"coding\",\n        \"use_docker\": False,\n    },\n    is_termination_msg=lambda x: x.get(\n        \"content\", \"\") and \"TERMINATE\" in x.get(\"content\", \"\"),\n    max_consecutive_auto_reply=1,",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "parse_requirements",
+        "kind": 2,
+        "importPath": "setup",
+        "description": "setup",
+        "peekOfCode": "def parse_requirements(filename):\n    with open(filename, 'r') as file:\n        return file.read().splitlines()\ninstall_requires=parse_requirements('requirements.txt'),\nsetup(\n    name='your_project_name',\n    version='0.1.0',\n    description='A brief description of your project',\n    long_description=open('README.md').read(),\n    long_description_content_type='text/markdown',",
+        "detail": "setup",
+        "documentation": {}
+    }
+]
