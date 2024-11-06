@@ -146,15 +146,6 @@
         "documentation": {}
     },
     {
-        "label": "config_gemini",
-        "kind": 5,
-        "importPath": "src.config.gemini_config",
-        "description": "src.config.gemini_config",
-        "peekOfCode": "config_gemini = [\n    {\n        \"model\": \"gemini-1.5-flash-latest\",\n        \"api_key\": \"AIzaSyAHPspD17NRB4zsmV2mKuzal7UZ4nMxfek\",\n        \"api_type\": \"google\"\n    }\n]",
-        "detail": "src.config.gemini_config",
-        "documentation": {}
-    },
-    {
         "label": "config_list_bedrock",
         "kind": 5,
         "importPath": "src.main",
