@@ -1,41 +1,30 @@
-import autogen
-import os
+from autogen import AssistantAgent, GroupChat, GroupChatManager
+from config.bedrock_config import config_bedrock
 
-config_list_bedrock = [
-    {
-        "api_type": "bedrock",
-        "model": "amazon.titan-text-express-v1",
-        "aws_region": os.environ.get("REGION", "us-east-1"),
-        "aws_access_key": os.environ.get("AWS_ACCESS_KEY_ID"),
-        "aws_secret_key": os.environ.get("AWS_SECRET_ACCESS_KEY"),
-        "price": [0.003, 0.015],
-        "temperature": 0.1,
-        "cache_seed": None,
-    }
-]
+llm_config = {"config_list": config_bedrock}
 
-assistant = autogen.AssistantAgent(
-    "assistant",
-    llm_config={
-        "config_list": config_list_bedrock,
-    },
+content_analist = AssistantAgent(
+    "content_analist",
+    system_message="""You are an AI assistant specialized medical content analyst,
+    your task is get relevant medical information and look for trends.""",
+    llm_config=llm_config,
 )
 
-user_proxy = autogen.UserProxyAgent(
-    "user_proxy",
-    human_input_mode="NEVER",
-    code_execution_config={
-        "work_dir": "coding",
-        "use_docker": False,
-    },
-    is_termination_msg=lambda x: x.get(
-        "content", "") and "TERMINATE" in x.get("content", ""),
-    max_consecutive_auto_reply=1,
+post_generator = AssistantAgent(
+    "post_generator",
+    system_message="""You are an AI assistant specialized in creating social media content.
+    Your task is to generate posts for various platforms like Twitter, Instagram, and LinkedIn.""",
+    llm_config=llm_config,
 )
 
-user_proxy.initiate_chat(
-    assistant,
-    message="""Write a python program to print the first
-    10 numbers of the Fibonacci sequence. Just output the python code, 
-    no additional information.""",
+agents = [content_analist, post_generator]
+group_chat = GroupChat(
+    agents=agents, allow_repeat_speaker=False, messages=[], max_round=2)
+manager = GroupChatManager(
+    groupchat=group_chat, llm_config=llm_config)
+
+manager.initiate_chat(
+    content_analist,
+    message="""Generate a social media post about Artificial Intelligence in
+    Healthcare. Make it engaging and appropriate for LinkedIn.""",
 )
