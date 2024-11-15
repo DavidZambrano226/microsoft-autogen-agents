@@ -1,7 +1,7 @@
 from autogen import AssistantAgent, GroupChat, GroupChatManager
-from config.bedrock_config import config_bedrock
+from config.bedrock_config import ollama_config
 
-llm_config = {"config_list": config_bedrock}
+llm_config = {"config_list": ollama_config}
 
 content_analist = AssistantAgent(
     "content_analist",
