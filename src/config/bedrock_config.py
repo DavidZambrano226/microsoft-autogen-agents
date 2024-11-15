@@ -10,7 +10,10 @@ config_bedrock = [
         "price": [0.003, 0.015],
         "temperature": 0.1,
         "cache_seed": None,
-    },
+    }
+]
+
+ollama_config = [
     {
         "model": "codellama",
         "base_url": "http://localhost:11434/v1",
