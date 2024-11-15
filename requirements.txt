@@ -7,9 +7,6 @@ async-timeout==4.0.3
 asyncio-atexit==1.0.1
 attrs==24.2.0
 autogen==0.3.1
-# autogen-agentchat==0.4.0.dev2
-# autogen-core==0.4.0.dev2
-# autogen-ext==0.4.0.dev2
 boto3==1.35.49
 botocore==1.35.49
 cachetools==5.5.0
@@ -22,15 +19,7 @@ docker==7.1.0
 exceptiongroup==1.2.2
 FLAML==2.3.1
 frozenlist==1.5.0
-# google-ai-generativelanguage==0.6.10
-# google-api-core==2.22.0
-# google-api-python-client==2.151.0
-# google-auth==2.35.0
-# google-auth-httplib2==0.2.0
-# google-generativeai==0.8.3
-# googleapis-common-protos==1.65.0
 grpcio~=1.62.0
-# grpcio-status==1.67.1
 h11==0.14.0
 httpcore==1.0.6
 httplib2==0.22.0
