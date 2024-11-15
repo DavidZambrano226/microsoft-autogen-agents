@@ -15,7 +15,7 @@ config_bedrock = [
 
 ollama_config = [
     {
-        "model": "codellama",
+        "model": "orca-mini",
         "base_url": "http://localhost:11434/v1",
         "api_key": "ollama",
     }
