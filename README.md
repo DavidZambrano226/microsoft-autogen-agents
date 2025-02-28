@@ -4,7 +4,7 @@ This project uses Microsoft Autogen to build Intelligent Automation Gateway (IAG
 
 ## Table of Contents
 
-- [Installation](#installation) asdf
+- [Installation](#installation)
 - [Usage](#usage)
 - [Features](#features)
 - [Contributing](#contributing)
